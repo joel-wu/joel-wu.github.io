@@ -1,0 +1,47 @@
+/* Styles for collapsible <details> with a triangle indicator */
+
+/* Remove default marker and make the summary look clickable */
+details > summary {
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: baseline;
+  padding: 0;
+  margin: 0;
+}
+
+/* Hide the default disclosure triangle in WebKit */
+details > summary::-webkit-details-marker {
+  display: none;
+}
+
+/* Custom triangle */
+details > summary::before {
+  content: "▶";
+  display: inline-block;
+  margin-right: 6px;
+  font-size: 0.9em;
+  transform: translateY(-1px);
+  transition: transform 0.15s ease;
+}
+
+/* Rotate/down triangle when open */
+details[open] > summary::before {
+  content: "▼";
+}
+
+/* Hover and focus states */
+details > summary:hover {
+  text-decoration: underline;
+}
+
+details > summary:focus-visible {
+  outline: 2px solid #8ab4f8;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Optional spacing for content after the summary */
+details[open] > summary + * {
+  margin-top: 10px;
+}
